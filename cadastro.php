@@ -25,7 +25,7 @@
                   
                     <div class="notification is-success">
                       <p>Cadastro efetuado!</p>
-                      <p>Faça login informando o seu usuário e senha <a href="login.php">aqui</a></p>
+                      <p>Faça login informando o seu usuário e senha <a href="index.php">aqui</a></p>
                    
                     </div>
                                    
@@ -41,11 +41,11 @@
                                 </div>
                             </div>
 
-                            <div class="field">
+                            <!-- <div class="field">
                                 <div class="control">
                                     <input name="nome_usuario" type="text" class="input is-large" placeholder="nome do usuarios" autofocus>
                                 </div>
-                            </div>
+                            </div> -->
 
 
                             <div class="field">
