@@ -1,7 +1,18 @@
 <?php
 session_start();
-require 'login.php';
+//require 'login.php';
 require 'vLogin.php';
+
+
+$variavelTeste = "O CoraçÃo e FUNDAMENTAL para o corpo humano";
+
+
+var_dump([
+    "mb_strtolower"=>mb_strtolower($variavelTeste),
+    "strtolower"=>strtolower($variavelTeste),
+])
+
+
 ?>
 <head>
     <meta charset="utf-8">
