@@ -4,9 +4,25 @@
 
 
     if (isset($_POST['nome']) && !empty($_POST['nome'])) {
-        $nome = stripslashes($_POST['nome']);
-        $email = stripslashes($_POST['email']);
-        $senha = md5(stripslashes($_POST['senha']));
+        /*$nome = stripslashes($_POST['nome']);
+        $email = stripslashes($_POST['email']);*/
+        //$senha = md5(stripslashes($_POST['senha']));
+
+
+        $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRIPPED));
+        $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRIPPED);
+        $email = trim(filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL));
+
+        /* Se o email for falso redireciona 
+        *  Necessário mostrar uma mensagem para o usuário depois...
+        */
+        if(!$email){
+            header('Location: index.php');
+            exit();
+        }
+
+        $senha = password_hash($senha, PASSWORD_DEFAULT);
+
         $query = $conn->prepare("INSERT INTO usuarios(nome,email,senha) VALUES(:nome,:email,:senha)");
         $query->execute([
             'nome' => $nome,
@@ -19,33 +35,4 @@
         exit();
     }
 
-    // $nome = mysqli_real_escape_string($conn, ($_POST['nome']));
-    // $nome_usuario = mysqli_real_escape_string($conn, ($_POST['nome_usuario']));
-    // $email = mysqli_real_escape_string($conn, ($_POST['email']));
-    // $senha = mysqli_real_escape_string($conn, md5($_POST['senha']));
-
-
-    // $sql = "SELECT count(*) as total from usuarios where email = '$email'";
-    // $result = mysqli_query($conn,$sql);
-    // $row = mysqli_fetch_assoc($result);
-
-    // if (row['total'] != 0) {
-    //     $_SESSION['userExists'] = true;
-    //     header('Location: cadastro.php');
-    //     exit();
-    //     # code...
-    // }
-    // $sql =  "INSERT INTO usuarios(nome,nome_usuario,email,senha,data_criado) VALUES('$nome','$nome_usuario','$email', '$senha', 'NOW()')";
-
-    // if ($conn->query($sql) === true ) {
-    //     echo "cadastro feito com sucesso";
-    //     $_SESSION['status'] = true;
-    //     exit();
-    // }
-    // else {
-    //     echo "cadastro error";
-    // }
-    // $conn->close();
-    // header('Location: cadastro.php');
-    // exit();
 ?>
