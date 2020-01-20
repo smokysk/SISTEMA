@@ -21,18 +21,15 @@
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
                     <h3 class="title has-text-grey">Sistema de Cadastro</h3>
-                    <h3 class="title has-text-grey"><a href="https://youtube.com/canaltioficial" target="_blank">Canal TI</a></h3>
-                    
+                    <h3 class="title has-text-grey"><a href="https://youtube.com/canaltioficial" target="_blank">Canal TI</a></h3>       
                     <?php
                         session_start();
                         if(isset($_SESSION['status'])):
-                    ?>
-                    
-                    <div class="notification is-success">
-                      <p>Cadastro efetuado!</p>
-                      <p>Faça login informando o seu usuário e senha <a href="index.php">aqui</a></p> 
-                    </div>
-
+                    ?>     
+                        <div class="notification is-success">
+                        <p>Cadastro efetuado!</p>
+                        <p>Faça login informando o seu usuário e senha <a href="index.php">aqui</a></p> 
+                        </div>
                     <?php
                         endif;
                         unset($_SESSION['status']);
@@ -42,9 +39,9 @@
                         session_start();
                         if(isset($_SESSION['exists'])):
                     ?>
-                    <div class="notification is-info">
-                        <p>O email do usuáraio escolhido já existe. Informe outro e tente novamente.</p>
-                    </div>
+                        <div class="notification is-info">
+                            <p>O email do usuáraio escolhido já existe. Informe outro e tente novamente.</p>
+                        </div>
                     <?php
                         endif;
                         unset($_SESSION['exists']);
