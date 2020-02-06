@@ -22,6 +22,19 @@
                 <div class="column is-4 is-offset-4">
                     <h3 class="title has-text-grey">Sistema de Cadastro</h3>
                     <h3 class="title has-text-grey"><a href="https://youtube.com/canaltioficial" target="_blank">Canal TI</a></h3>       
+                    
+                    <?php
+                        session_start();
+                        if(isset($_SESSION['empty'])):
+                    ?>
+                        <div class="notification is-info">
+                            <p>campos vazios por favor preencher</p>
+                        </div>
+                    <?php
+                        endif;
+                        unset($_SESSION['empty']);
+                    ?>
+                    
                     <?php
                         session_start();
                         if(isset($_SESSION['status'])):
@@ -46,6 +59,8 @@
                         endif;
                         unset($_SESSION['exists']);
                     ?>
+
+                    
                    
                     <div class="box">
                         <form action="cadastrar.php" method="POST">

@@ -1,6 +1,10 @@
 <?php
     session_start();
     require_once 'conf.php';
+    if(empty($_POST['nome']) && empty($_POST['email']) && empty($_POST['senha'])){
+        header("Location: cadastro.php");
+        $_SESSION['empty'] = true;
+    }
 
     if (isset($_POST['nome']) && !empty($_POST['nome'])) {
         $nome = trim(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRIPPED));
